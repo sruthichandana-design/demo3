@@ -1,0 +1,648 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ELEVATE - Transform Your Life</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700;800&family=Lora:wght@400;600&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --sunrise-orange: #FF6B35;
+            --ocean-teal: #004E89;
+            --warm-sand: #F7F3E3;
+            --deep-navy: #1A1F3A;
+            --soft-coral: #FF9770;
+            --mint-green: #5DD39E;
+            --pure-white: #FFFFFF;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            background: var(--warm-sand);
+            color: var(--deep-navy);
+            overflow-x: hidden;
+        }
+
+        header {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            padding: 1.5rem 4rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            z-index: 1000;
+            background: rgba(247, 243, 227, 0.95);
+            backdrop-filter: blur(10px);
+            border-bottom: 1px solid rgba(26, 31, 58, 0.1);
+            animation: slideDown 0.8s ease-out;
+        }
+
+        @keyframes slideDown {
+            from {
+                transform: translateY(-100%);
+                opacity: 0;
+            }
+            to {
+                transform: translateY(0);
+                opacity: 1;
+            }
+        }
+
+        .logo {
+            font-family: 'Lora', serif;
+            font-size: 2rem;
+            font-weight: 600;
+            color: var(--ocean-teal);
+            letter-spacing: 0.05rem;
+        }
+
+        .logo span {
+            color: var(--sunrise-orange);
+        }
+
+        nav {
+            display: flex;
+            gap: 2.5rem;
+            align-items: center;
+        }
+
+        nav a {
+            color: var(--deep-navy);
+            text-decoration: none;
+            font-weight: 500;
+            font-size: 0.95rem;
+            transition: color 0.3s ease;
+            position: relative;
+        }
+
+        nav a::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: var(--sunrise-orange);
+            transition: width 0.3s ease;
+        }
+
+        nav a:hover {
+            color: var(--sunrise-orange);
+        }
+
+        nav a:hover::after {
+            width: 100%;
+        }
+
+        .cta-nav {
+            padding: 0.7rem 1.8rem;
+            background: var(--sunrise-orange);
+            color: var(--pure-white);
+            border-radius: 30px;
+            font-weight: 600;
+            transition: all 0.3s ease;
+        }
+
+        .cta-nav:hover {
+            background: var(--ocean-teal);
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(255, 107, 53, 0.3);
+        }
+
+        .hero {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            padding: 0 4rem;
+            position: relative;
+            background: linear-gradient(135deg, var(--warm-sand) 0%, #FFF8E7 100%);
+            overflow: hidden;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            right: -20%;
+            width: 800px;
+            height: 800px;
+            border-radius: 50%;
+            background: radial-gradient(circle, rgba(255, 107, 53, 0.1) 0%, transparent 70%);
+            animation: pulse 8s ease-in-out infinite;
+        }
+
+        @keyframes pulse {
+            0%, 100% {
+                transform: scale(1);
+                opacity: 0.5;
+            }
+            50% {
+                transform: scale(1.2);
+                opacity: 0.3;
+            }
+        }
+
+        .hero-content {
+            max-width: 1400px;
+            width: 100%;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: 1.1fr 0.9fr;
+            gap: 5rem;
+            align-items: center;
+            position: relative;
+            z-index: 2;
+        }
+
+        .hero-text {
+            animation: fadeInLeft 1.2s ease-out;
+        }
+
+        @keyframes fadeInLeft {
+            from {
+                opacity: 0;
+                transform: translateX(-40px);
+            }
+            to {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+
+        .hero-badge {
+            display: inline-block;
+            padding: 0.5rem 1.2rem;
+            background: linear-gradient(135deg, var(--mint-green), var(--ocean-teal));
+            color: white;
+            border-radius: 30px;
+            font-size: 0.85rem;
+            font-weight: 600;
+            margin-bottom: 1.5rem;
+            letter-spacing: 0.05rem;
+        }
+
+        .hero h1 {
+            font-size: 4.5rem;
+            font-weight: 800;
+            line-height: 1.1;
+            margin-bottom: 1.5rem;
+            color: var(--deep-navy);
+        }
+
+        .hero h1 .highlight {
+            background: linear-gradient(135deg, var(--sunrise-orange), var(--soft-coral));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .hero-description {
+            font-size: 1.2rem;
+            line-height: 1.8;
+            color: #666;
+            margin-bottom: 2.5rem;
+            font-weight: 300;
+        }
+
+        .cta-group {
+            display: flex;
+            gap: 1.5rem;
+            align-items: center;
+        }
+
+        .cta-primary, .cta-secondary {
+            padding: 1.1rem 2.5rem;
+            font-weight: 600;
+            font-size: 1rem;
+            border: none;
+            cursor: pointer;
+            border-radius: 50px;
+            transition: all 0.3s ease;
+            font-family: 'Poppins', sans-serif;
+        }
+
+        .cta-primary {
+            background: linear-gradient(135deg, var(--sunrise-orange), var(--soft-coral));
+            color: white;
+            box-shadow: 0 10px 30px rgba(255, 107, 53, 0.3);
+        }
+
+        .cta-primary:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 15px 40px rgba(255, 107, 53, 0.4);
+        }
+
+        .cta-secondary {
+            background: transparent;
+            color: var(--ocean-teal);
+            border: 2px solid var(--ocean-teal);
+        }
+
+        .cta-secondary:hover {
+            background: var(--ocean-teal);
+            color: white;
+        }
+
+        .hero-visual {
+            position: relative;
+            animation: fadeInRight 1.2s ease-out;
+        }
+
+        @keyframes fadeInRight {
+            from {
+                opacity: 0;
+                transform: translateX(40px);
+            }
+            to {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+
+        .testimonial-card {
+            background: white;
+            padding: 2rem;
+            border-radius: 20px;
+            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.08);
+            margin-bottom: 1.5rem;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .testimonial-card::before {
+            content: '"';
+            position: absolute;
+            top: -20px;
+            left: 20px;
+            font-size: 8rem;
+            color: var(--sunrise-orange);
+            opacity: 0.1;
+            font-family: 'Lora', serif;
+        }
+
+        .testimonial-text {
+            font-size: 1rem;
+            line-height: 1.7;
+            color: #555;
+            margin-bottom: 1rem;
+            font-style: italic;
+        }
+
+        .testimonial-author {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+
+        .author-avatar {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, var(--mint-green), var(--ocean-teal));
+        }
+
+        .author-info h4 {
+            font-size: 0.95rem;
+            font-weight: 600;
+            color: var(--deep-navy);
+        }
+
+        .author-info p {
+            font-size: 0.85rem;
+            color: #888;
+        }
+
+        .stats-floating {
+            position: absolute;
+            right: -30px;
+            bottom: 50px;
+            background: var(--ocean-teal);
+            color: white;
+            padding: 1.5rem 2rem;
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(0, 78, 137, 0.3);
+        }
+
+        .stats-floating h3 {
+            font-size: 2.5rem;
+            font-weight: 800;
+            margin-bottom: 0.3rem;
+        }
+
+        .stats-floating p {
+            font-size: 0.9rem;
+            opacity: 0.9;
+        }
+
+        .services {
+            padding: 8rem 4rem;
+            background: var(--pure-white);
+        }
+
+        .section-header {
+            text-align: center;
+            max-width: 700px;
+            margin: 0 auto 5rem;
+        }
+
+        .section-tag {
+            color: var(--sunrise-orange);
+            font-weight: 600;
+            font-size: 0.9rem;
+            text-transform: uppercase;
+            letter-spacing: 0.15rem;
+            margin-bottom: 1rem;
+        }
+
+        .section-header h2 {
+            font-size: 3rem;
+            font-weight: 700;
+            margin-bottom: 1.5rem;
+            color: var(--deep-navy);
+        }
+
+        .section-header p {
+            font-size: 1.1rem;
+            color: #666;
+            line-height: 1.7;
+        }
+
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 2.5rem;
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        .service-card {
+            background: var(--warm-sand);
+            padding: 3rem 2.5rem;
+            border-radius: 20px;
+            transition: all 0.4s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .service-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 4px;
+            height: 0;
+            background: linear-gradient(180deg, var(--sunrise-orange), var(--soft-coral));
+            transition: height 0.4s ease;
+        }
+
+        .service-card:hover::before {
+            height: 100%;
+        }
+
+        .service-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 50px rgba(0, 0, 0, 0.1);
+        }
+
+        .service-icon {
+            width: 70px;
+            height: 70px;
+            background: linear-gradient(135deg, var(--sunrise-orange), var(--soft-coral));
+            border-radius: 15px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 2rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .service-card h3 {
+            font-size: 1.5rem;
+            font-weight: 600;
+            margin-bottom: 1rem;
+            color: var(--deep-navy);
+        }
+
+        .service-card p {
+            font-size: 0.95rem;
+            line-height: 1.7;
+            color: #666;
+            margin-bottom: 1.5rem;
+        }
+
+        .service-link {
+            color: var(--sunrise-orange);
+            font-weight: 600;
+            text-decoration: none;
+            font-size: 0.9rem;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            transition: gap 0.3s ease;
+        }
+
+        .service-link:hover {
+            gap: 1rem;
+        }
+
+        .cta-section {
+            padding: 6rem 4rem;
+            background: linear-gradient(135deg, var(--ocean-teal) 0%, var(--deep-navy) 100%);
+            color: white;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .cta-section::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='0.05'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+            opacity: 0.1;
+        }
+
+        .cta-content {
+            max-width: 800px;
+            margin: 0 auto;
+            position: relative;
+            z-index: 2;
+        }
+
+        .cta-section h2 {
+            font-size: 3.5rem;
+            font-weight: 700;
+            margin-bottom: 1.5rem;
+            line-height: 1.2;
+        }
+
+        .cta-section p {
+            font-size: 1.2rem;
+            margin-bottom: 2.5rem;
+            opacity: 0.9;
+        }
+
+        .cta-large {
+            padding: 1.3rem 3rem;
+            background: var(--sunrise-orange);
+            color: white;
+            border: none;
+            border-radius: 50px;
+            font-weight: 700;
+            font-size: 1.1rem;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-family: 'Poppins', sans-serif;
+        }
+
+        .cta-large:hover {
+            background: var(--soft-coral);
+            transform: scale(1.05);
+            box-shadow: 0 10px 30px rgba(255, 107, 53, 0.4);
+        }
+
+        footer {
+            padding: 3rem 4rem;
+            background: var(--deep-navy);
+            color: white;
+            text-align: center;
+        }
+
+        footer p {
+            opacity: 0.7;
+            font-size: 0.9rem;
+        }
+
+        @media (max-width: 768px) {
+            .hero-content {
+                grid-template-columns: 1fr;
+            }
+            
+            .services-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .hero h1 {
+                font-size: 3rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="logo">ELEV<span>ATE</span></div>
+        <nav>
+            <a href="#about">About</a>
+            <a href="#services">Services</a>
+            <a href="#success">Success Stories</a>
+            <a href="#contact" class="cta-nav">Book a Call</a>
+        </nav>
+    </header>
+
+    <section class="hero">
+        <div class="hero-content">
+            <div class="hero-text">
+                <div class="hero-badge">✨ Transform Your Life Today</div>
+                <h1>Unlock Your <span class="highlight">True Potential</span></h1>
+                <p class="hero-description">Work with a certified life coach who helps ambitious professionals break through barriers, achieve their goals, and create the life they've always imagined.</p>
+                <div class="cta-group">
+                    <button class="cta-primary">Start Your Journey</button>
+                    <button class="cta-secondary">Watch Video</button>
+                </div>
+            </div>
+            
+            <div class="hero-visual">
+                <div class="testimonial-card">
+                    <p class="testimonial-text">"Working with this coach completely changed my perspective. I went from feeling stuck to landing my dream job in 3 months!"</p>
+                    <div class="testimonial-author">
+                        <div class="author-avatar"></div>
+                        <div class="author-info">
+                            <h4>Sarah Mitchell</h4>
+                            <p>Marketing Director</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="stats-floating">
+                    <h3>500+</h3>
+                    <p>Lives Transformed</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="services">
+        <div class="section-header">
+            <div class="section-tag">What I Offer</div>
+            <h2>Coaching Services</h2>
+            <p>Personalized coaching programs designed to help you overcome challenges and achieve breakthrough results in every area of your life.</p>
+        </div>
+        
+        <div class="services-grid">
+            <div class="service-card">
+                <div class="service-icon">🎯</div>
+                <h3>Career Coaching</h3>
+                <p>Navigate career transitions, land your dream job, or accelerate your professional growth with strategic guidance.</p>
+                <a href="#" class="service-link">Learn More →</a>
+            </div>
+            
+            <div class="service-card">
+                <div class="service-icon">💡</div>
+                <h3>Life Purpose</h3>
+                <p>Discover your true calling, align with your values, and create a life filled with meaning and fulfillment.</p>
+                <a href="#" class="service-link">Learn More →</a>
+            </div>
+            
+            <div class="service-card">
+                <div class="service-icon">🚀</div>
+                <h3>Leadership Development</h3>
+                <p>Develop the skills and mindset to lead with confidence, inspire your team, and make a lasting impact.</p>
+                <a href="#" class="service-link">Learn More →</a>
+            </div>
+            
+            <div class="service-card">
+                <div class="service-icon">⚖️</div>
+                <h3>Work-Life Balance</h3>
+                <p>Master time management, set boundaries, and create harmony between your professional and personal life.</p>
+                <a href="#" class="service-link">Learn More →</a>
+            </div>
+            
+            <div class="service-card">
+                <div class="service-icon">💪</div>
+                <h3>Confidence Building</h3>
+                <p>Overcome self-doubt, embrace your strengths, and step into your power with unshakeable confidence.</p>
+                <a href="#" class="service-link">Learn More →</a>
+            </div>
+            
+            <div class="service-card">
+                <div class="service-icon">🎨</div>
+                <h3>Personal Brand</h3>
+                <p>Define and communicate your unique value proposition to stand out in your field and attract opportunities.</p>
+                <a href="#" class="service-link">Learn More →</a>
+            </div>
+        </div>
+    </section>
+
+    <section class="cta-section">
+        <div class="cta-content">
+            <h2>Ready to Transform Your Life?</h2>
+            <p>Book your free 30-minute discovery call and let's explore how coaching can help you achieve your goals.</p>
+            <button class="cta-large">Schedule Free Consultation</button>
+        </div>
+    </section>
+
+    <footer>
+        <p>&copy; 2026 ELEVATE Coaching. All Rights Reserved.</p>
+    </footer>
+</body>
+</html>
